@@ -27,7 +27,8 @@ func (c *SlackClient) PostMessage(channelID, message string) (err error) {
 		slack.MsgOptionText(message, false),
 	)
 	if err != nil {
-		panic(err)
+		log.Printf("[Slack-PostMessage] err during postmessage - %+v\n", err)
+		return err
 	}
 	log.Printf("[Slack-PostMessage] Sent text message %s to Channel %s @ %s\n", message, rchannelID, ts)
 	return nil
